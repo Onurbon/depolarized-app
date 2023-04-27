@@ -1,0 +1,17 @@
+export { ReactComponent as ComingUp } from "../graphics/coming-up.svg";
+export { ReactComponent as Active } from "../graphics/active.svg";
+export { ReactComponent as Completed } from "../graphics/completed.svg";
+export { ReactComponent as Plus } from "../graphics/plus.svg";
+export { ReactComponent as Account } from "../graphics/account.svg";
+export { ReactComponent as Logo } from "../graphics/logo.svg";
+export { ReactComponent as Back } from "../graphics/back.svg";
+export { ReactComponent as Prev } from "../graphics/prev.svg";
+export { ReactComponent as Next } from "../graphics/next.svg";
+export { ReactComponent as Flag } from "../graphics/flag.svg";
+export { ReactComponent as FlagFull } from "../graphics/flagfull.svg";
+export { ReactComponent as StarFull } from "../graphics/starfull.svg";
+export { ReactComponent as Star } from "../graphics/star.svg";
+export { ReactComponent as Edit } from "../graphics/edit.svg";
+export { ReactComponent as ThumbUp } from "../graphics/thumbup.svg";
+export { ReactComponent as Cross } from "../graphics/cross.svg";
+export { ReactComponent as Comment } from "../graphics/comment.svg";
