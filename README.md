@@ -1,27 +1,15 @@
 # Depolarized App
 
-Depolarized is a web app designed to encourage deep and balanced conversations.
+Depolarized is a social application designed to encourage deep and balanced conversations on complex topics while leveraging modern LLMs to simplify (and eventually automate some of) the work of moderators and facilitators. 
 
-It was built with **TypeScript**, **React**, **Tailwind**, **Firebase** and **ChatGPT**.
+### Quick overview
 
-## Context
+https://github.com/Onurbon/depolarized-app/assets/3934784/d43b44ac-636f-4442-a837-26d312e2980f
 
-This is only a prototype, not a production-ready app. It was built in a couple of weeks in Feb 2023 to test some product ideas. It's been used by 50+ beta testers and most features seemed to work, but you should expect plenty of bugs and rough edges.
-
-## How to run
-
-1. Set up a [Firebase](https://firebase.google.com/) project with Firestore, Functions, Phone Auth and a Blaze plan
-2. Set up an [OpenAI](https://platform.openai.com/) account for ChatGPT (**warning**: your key is used in the front-end, so you'll want to set some strict [usage limits](https://platform.openai.com/account/billing/limits))
-3. Look at `./src/secrets.ts` to find the list of required variables and create a `.env.local` file to populate them
-4. Run `npm start` to start the app locally or `firebase deploy` to deploy to production
-5. Sign up with a phone number using any 6-digit code as invite code
-6. In the Firestore UI, look at the new document in the `users` collection and manually set the `isAdmin` field to `true`
-7. As an admin user you'll then be able to initiate conversations, moderate conversations and use the AI playground.
-
-## Conversations format
+## Conversation format
 
 - The conversations have two sides and are moderated by admin users (aka facilitators)
-- The facilitators can use ChatGPT in a custom-built AI playground (pre-loaded with the conversation's history) to prepare helpful feedback for contributors
+- The facilitators can use LLMs in a custom-built AI playground (pre-loaded with the conversation's history) to prepare helpful feedback for contributors
 - Contributors from each side are encouraged to collaborate on producing strong arguments while demonstrating openness, curiosity and respect for the other side
 - Users can suggest specific changes, which are shown to the author as a "diff" in the UI, and the author can then accept or reject the changes
 - Users can also vote, rank and comment on arguments
@@ -50,7 +38,25 @@ The AI playground can be accessed by any admin user on desktop by clicking the "
 
 You can see and extend the list of prompts in `./src/ai/prompts`.
 
-## Technical pointers
+## About the code
+
+Depolarized was built as a progressive web app with **TypeScript**, **React**, **Tailwind**, **Firebase** and **ChatGPT**. 
+
+### Disclaimer 
+
+You're looking at a prototype, not a production-ready app. It was built in a couple of weeks in Feb 2023 to test some product ideas. Most features seemed to work during beta testing, but you should expect plenty of bugs and rough edges.
+
+### How to run
+
+1. Set up a [Firebase](https://firebase.google.com/) project with Firestore, Functions, Phone Auth and a Blaze plan
+2. Set up an [OpenAI](https://platform.openai.com/) account for ChatGPT (**warning**: your key is used in the front-end, so you'll want to set some strict [usage limits](https://platform.openai.com/account/billing/limits))
+3. Look at `./src/secrets.ts` to find the list of required variables and create a `.env.local` file to populate them
+4. Run `npm start` to start the app locally or `firebase deploy` to deploy to production
+5. Sign up with a phone number using any 6-digit code as invite code
+6. In the Firestore UI, look at the new document in the `users` collection and manually set the `isAdmin` field to `true`
+7. As an admin user you'll then be able to initiate conversations, moderate conversations and use the AI playground.
+
+### Technical pointers
 
 If you came here for the code (rather than the product or the AI prompts), here are some bits you might find interesting:
 
@@ -61,6 +67,8 @@ If you came here for the code (rather than the product or the AI prompts), here 
 - The home page (`./src/pages/home`) responds nicely to different screen sizes, using two separate screens on mobile and a single-screen layout with two columns on larger screens (similar to WhatsApp's desktop app).
 - Some notifications are sent to users (inside the app) when they receive feedback from others (e.g. comments or suggested edits). The code is in `./src/pages/notifications`.
 - All the reviews (ratings, comments, edits) made on an argument are aggregated by the `aggregateReviews` function in `./functions/src/index.ts`. This one took a while because debugging Firebase Functions is still painfully slow, even when using a local test environment.
+
+### Known issues
 
 Many things could have been done better. Just to list a few:
 
